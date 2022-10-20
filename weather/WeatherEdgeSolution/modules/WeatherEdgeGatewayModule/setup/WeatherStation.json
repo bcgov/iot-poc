@@ -1,0 +1,421 @@
+[
+  {
+    "@id": "dtmi:demobc:WeatherStation;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@id": "dtmi:demobc:WeatherStation:AirHumidity;1",
+        "@type": "Telemetry",
+        "displayName": {
+          "en": "Air_Humidity"
+        },
+        "name": "AirHumidity",
+        "schema": {
+          "@id": "dtmi:demobc:WeatherStation:AirHumidity:schema;1",
+          "@type": "Object",
+          "displayName": {
+            "en": "Object"
+          },
+          "fields": [
+            {
+              "@id": "dtmi:demobc:WeatherStation:AirHumidity:schema:MaxAirTemp1;1",
+              "displayName": {
+                "en": "MaxAirTemp1"
+              },
+              "name": "MaxAirTemp1",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:AirHumidity:schema:CurAirTemp1;1",
+              "displayName": {
+                "en": "CurAirTemp1"
+              },
+              "name": "CurAirTemp1",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:AirHumidity:schema:MinAirTemp1;1",
+              "displayName": {
+                "en": "MinAirTemp1"
+              },
+              "name": "MinAirTemp1",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:AirHumidity:schema:AirTempQ;1",
+              "displayName": {
+                "en": "AirTempQ"
+              },
+              "name": "AirTempQ",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:AirHumidity:schema:AirTemp2;1",
+              "displayName": {
+                "en": "AirTemp2"
+              },
+              "name": "AirTemp2",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:AirHumidity:schema:RH;1",
+              "displayName": {
+                "en": "RH"
+              },
+              "name": "RH",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:AirHumidity:schema:DewPoint;1",
+              "displayName": {
+                "en": "Dew_Point"
+              },
+              "name": "DewPoint",
+              "schema": "float"
+            }
+          ]
+        }
+      },
+      {
+        "@id": "dtmi:demobc:WeatherStation:AtmosPressure;1",
+        "@type": "Telemetry",
+        "displayName": {
+          "en": "Atmos_Pressure"
+        },
+        "name": "AtmosPressure",
+        "schema": {
+          "@id": "dtmi:demobc:WeatherStation:AtmosPressure:schema;1",
+          "@type": "Object",
+          "displayName": {
+            "en": "Object"
+          },
+          "fields": [
+            {
+              "@id": "dtmi:demobc:WeatherStation:AtmosPressure:schema:AtmPressure;1",
+              "displayName": {
+                "en": "AtmPressure"
+              },
+              "name": "AtmPressure",
+              "schema": "float"
+            }
+          ]
+        }
+      },
+      {
+        "@id": "dtmi:demobc:WeatherStation:Pavement;1",
+        "@type": "Telemetry",
+        "displayName": {
+          "en": "Pavement"
+        },
+        "name": "Pavement",
+        "schema": {
+          "@id": "dtmi:demobc:WeatherStation:Pavement:schema;1",
+          "@type": "Object",
+          "displayName": {
+            "en": "Object"
+          },
+          "fields": [
+            {
+              "@id": "dtmi:demobc:WeatherStation:Pavement:schema:PvmntTemp1;1",
+              "displayName": {
+                "en": "PvmntTemp1"
+              },
+              "name": "PvmntTemp1",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Pavement:schema:PavementQ1;1",
+              "displayName": {
+                "en": "PavementQ1"
+              },
+              "name": "PavementQ1",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Pavement:schema:AltPaveTemp1;1",
+              "displayName": {
+                "en": "AltPaveTemp1"
+              },
+              "name": "AltPaveTemp1",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Pavement:schema:FrzPntTemp1;1",
+              "displayName": {
+                "en": "FrzPntTemp1"
+              },
+              "name": "FrzPntTemp1",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Pavement:schema:FrzPntTemp1Q;1",
+              "displayName": {
+                "en": "FrzPntTemp1Q"
+              },
+              "name": "FrzPntTemp1Q",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Pavement:schema:PvmntCond;1",
+              "displayName": {
+                "en": "PvmntCond"
+              },
+              "name": "PvmntCond",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Pavement:schema:PvmntCond1Q;1",
+              "displayName": {
+                "en": "PvmntCond1Q"
+              },
+              "name": "PvmntCond1Q",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Pavement:schema:SbAsphltTemp;1",
+              "displayName": {
+                "en": "SbAsphltTemp"
+              },
+              "name": "SbAsphltTemp",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Pavement:schema:PvBaseTemp1;1",
+              "displayName": {
+                "en": "PvBaseTemp1"
+              },
+              "name": "PvBaseTemp1",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Pavement:schema:PvBaseTemp1Q;1",
+              "displayName": {
+                "en": "PvBaseTemp1Q"
+              },
+              "name": "PvBaseTemp1Q",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Pavement:schema:PvmntSrfCvTh;1",
+              "displayName": {
+                "en": "PvmntSrfCvTh"
+              },
+              "name": "PvmntSrfCvTh",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Pavement:schema:PvmntSrfCvThQ;1",
+              "displayName": {
+                "en": "PvmntSrfCvThQ"
+              },
+              "name": "PvmntSrfCvThQ",
+              "schema": "float"
+            }
+          ]
+        }
+      },
+      {
+        "@id": "dtmi:demobc:WeatherStation:Precipitation;1",
+        "@type": "Telemetry",
+        "displayName": {
+          "en": "Precipitation"
+        },
+        "name": "Precipitation",
+        "schema": {
+          "@id": "dtmi:demobc:WeatherStation:Precipitation:schema;1",
+          "@type": "Object",
+          "displayName": {
+            "en": "Object"
+          },
+          "fields": [
+            {
+              "@id": "dtmi:demobc:WeatherStation:Precipitation:schema:GaugeTot;1",
+              "displayName": {
+                "en": "GaugeTot"
+              },
+              "name": "GaugeTot",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Precipitation:schema:NewPrecip;1",
+              "displayName": {
+                "en": "NewPrecip"
+              },
+              "name": "NewPrecip",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Precipitation:schema:HrlyPrecip;1",
+              "displayName": {
+                "en": "HrlyPrecip"
+              },
+              "name": "HrlyPrecip",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Precipitation:schema:PrecipGaugeQ;1",
+              "displayName": {
+                "en": "PrecipGaugeQ"
+              },
+              "name": "PrecipGaugeQ",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Precipitation:schema:PrecipDetRatio;1",
+              "displayName": {
+                "en": "PrecipDetRatio"
+              },
+              "name": "PrecipDetRatio",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Precipitation:schema:PrecipDetQ;1",
+              "displayName": {
+                "en": "PrecipDetQ"
+              },
+              "name": "PrecipDetQ",
+              "schema": "float"
+            }
+          ]
+        }
+      },
+      {
+        "@id": "dtmi:demobc:WeatherStation:Snow;1",
+        "@type": "Telemetry",
+        "displayName": {
+          "en": "Snow"
+        },
+        "name": "Snow",
+        "schema": {
+          "@id": "dtmi:demobc:WeatherStation:Snow:schema;1",
+          "@type": "Object",
+          "displayName": {
+            "en": "Object"
+          },
+          "fields": [
+            {
+              "@id": "dtmi:demobc:WeatherStation:Snow:schema:HS;1",
+              "displayName": {
+                "en": "HS"
+              },
+              "name": "HS",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Snow:schema:HStd;1",
+              "displayName": {
+                "en": "HStd"
+              },
+              "name": "HStd",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Snow:schema:HrlySnow;1",
+              "displayName": {
+                "en": "HrlySnow"
+              },
+              "name": "HrlySnow",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Snow:schema:SnowQ;1",
+              "displayName": {
+                "en": "SnowQ"
+              },
+              "name": "SnowQ",
+              "schema": "float"
+            }
+          ]
+        }
+      },
+      {
+        "@id": "dtmi:demobc:WeatherStation:Wind;1",
+        "@type": "Telemetry",
+        "displayName": {
+          "en": "Wind"
+        },
+        "name": "Wind",
+        "schema": {
+          "@id": "dtmi:demobc:WeatherStation:Wind:schema;1",
+          "@type": "Object",
+          "displayName": {
+            "en": "Object"
+          },
+          "fields": [
+            {
+              "@id": "dtmi:demobc:WeatherStation:Wind:schema:MaxWindSpd;1",
+              "displayName": {
+                "en": "MaxWindSpd"
+              },
+              "name": "MaxWindSpd",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Wind:schema:MeanWindSpd;1",
+              "displayName": {
+                "en": "MeanWindSpd"
+              },
+              "name": "MeanWindSpd",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Wind:schema:WindSpd;1",
+              "displayName": {
+                "en": "WindSpd"
+              },
+              "name": "WindSpd",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Wind:schema:WindSpdQ;1",
+              "displayName": {
+                "en": "WindSpdQ"
+              },
+              "name": "WindSpdQ",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Wind:schema:MeanWindDir;1",
+              "displayName": {
+                "en": "MeanWindDir"
+              },
+              "name": "MeanWindDir",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Wind:schema:StDevWind;1",
+              "displayName": {
+                "en": "StDevWind"
+              },
+              "name": "StDevWind",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Wind:schema:WindDir;1",
+              "displayName": {
+                "en": "WindDir"
+              },
+              "name": "WindDir",
+              "schema": "float"
+            },
+            {
+              "@id": "dtmi:demobc:WeatherStation:Wind:schema:DerimeStat;1",
+              "displayName": {
+                "en": "DerimeStat"
+              },
+              "name": "DerimeStat",
+              "schema": "float"
+            }
+          ]
+        }
+      }
+    ],
+    "displayName": {
+      "en": "Weather Station"
+    },
+    "@context": [
+      "dtmi:iotcentral:context;2",
+      "dtmi:dtdl:context;2"
+    ]
+  }
+]

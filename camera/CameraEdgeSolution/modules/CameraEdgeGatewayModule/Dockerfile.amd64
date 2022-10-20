@@ -1,0 +1,23 @@
+#Download base image ubuntu 20.04
+FROM ubuntu:20.04 AS build-base
+WORKDIR /
+
+# Disable Prompt During Packages Installation
+ARG DEBIAN_FRONTEND=noninteractive
+RUN cd / && mkdir app
+
+RUN apt-get update && \
+    apt-get -y install sudo
+
+WORKDIR /app
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build-dev
+
+RUN apt-get update && apt-get install -y livemedia-utils
+WORKDIR /app
+COPY *.csproj ./
+RUN dotnet restore
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+WORKDIR /app/out
+ENTRYPOINT ["dotnet", "CameraEdgeGatewayModule.dll"]

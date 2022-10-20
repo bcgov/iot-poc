@@ -1,0 +1,154 @@
+{
+    "modulesContent": {
+        "$edgeAgent": {
+            "properties.desired": {
+                "schemaVersion": "1.1",
+                "runtime": {
+                    "type": "docker",
+                    "settings": {
+                        "minDockerVersion": "v1.25",
+                        "loggingOptions": "",
+                        "registryCredentials": {
+                            "edgedevicemoduleimage1containerregistry": {
+                              "username": "EdgeDeviceModuleImage1ContainerRegistry",
+                              "password": "S9z+riEDzEW2NgcEMAEuEwyRNv3VcVXy",
+                              "address": "edgedevicemoduleimage1containerregistry.azurecr.io"
+                            }
+                          }
+                    }
+                },
+                "systemModules": {
+                    "edgeAgent": {
+                        "type": "docker",
+                        "settings": {
+                            "image": "mcr.microsoft.com/azureiotedge-agent:1.2"
+                        }
+                    },
+                    "edgeHub": {
+                        "type": "docker",
+                        "status": "running",
+                        "restartPolicy": "always",
+                        "settings": {
+                            "image": "mcr.microsoft.com/azureiotedge-hub:1.2",
+                            "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
+                        },
+                        "startupOrder": 0
+                    }
+                },
+                "modules": {
+                    "rtspsim": {
+                        "settings": {
+                            "image": "mcr.microsoft.com/ava-utilities/rtspsim-live555:1.2"
+                        },
+                        "type": "docker",
+                        "status": "running",
+                        "restartPolicy": "always",
+                        "version": "1.0",
+                        "startupOrder": 1
+                    },
+                    "OnvifModule": {
+                        "settings": {
+                            "image": "mcr.microsoft.com/cameraplatform/ipcamedgemodule",
+                            "createOptions": "{\"HostConfig\":{\"NetworkMode\":\"host\"},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}}}"
+                        },
+                        "type": "docker",
+                        "status": "running",
+                        "restartPolicy": "always",
+                        "version": "1.0",
+                        "startupOrder": 2
+                    },
+                    "avaExtension": {
+                        "settings": {
+                            "image": "mcr.microsoft.com/ava-utilities/avaextension:grpc-yolov3-onnx-v1.0",
+                            "createOptions": "{\"HostConfig\":{\"IpcMode\":\"host\"}}"
+                        },
+                        "type": "docker",
+                        "status": "running",
+                        "restartPolicy": "always",
+                        "version": "1.0",
+                        "startupOrder": 3
+                    },
+                    "avaEdge": {
+                        "settings": {
+                            "image": "mcr.microsoft.com/media/video-analyzer:1",
+                            "createOptions": "{\"HostConfig\":{\"LogConfig\":{\"Type\":\"\",\"Config\":{\"max-size\":\"10m\",\"max-file\":\"10\"}},\"IpcMode\":\"host\",\"ShmSize\":1536870912,\"Binds\":[\"/var/media/:/var/media/\",\"/var/lib/videoanalyzer/:/var/lib/videoanalyzer/\"]}}"
+                        },
+                        "type": "docker",
+                        "env": {
+                            "EnableDiagnosticLogging": {
+                                "value": "True"
+                            }
+                        },
+                        "status": "running",
+                        "restartPolicy": "always",
+                        "version": "1.0",
+                        "startupOrder": 4
+                    },
+                    "AvaEdgeGatewayModule": {
+                        "settings": {
+                            "image": "edgedevicemoduleimage1containerregistry.azurecr.io/ava-edge-gateway:1.0.0-amd64",
+                            "createOptions": "{\"ExposedPorts\":{\"9229/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"9229/tcp\":[{\"HostPort\":\"9229\"}]},\"Binds\":[\"/var/iotcentralgw/storage:/data/storage/\",\"/var/iotcentralgw/media:/data/media/\"]}}"
+                        },
+                        "type": "docker",
+                        "env": {
+                            "onvifModuleId": {
+                                "value": "OnvifModule"
+                            },
+                            "avaEdgeModuleId": {
+                                "value": "avaEdge"
+                            },
+                            "avaOnvifCameraModelId": {
+                                "value": "dtmi:com:azuremedia:model:AvaOnvifCameraDevice;1"
+                            }
+                        },
+                        "status": "running",
+                        "restartPolicy": "always",
+                        "version": "1.0",
+                        "startupOrder": 5
+                    }
+                }
+            }
+        },
+        "$edgeHub": {
+            "properties.desired": {
+                "schemaVersion": "1.2",
+                "routes": {
+                    "AvaSignalGateTrigger": "FROM /messages/modules/AvaEdgeGatewayModule/outputs/avaTrigger INTO BrokeredEndpoint(\"/modules/avaEdge/inputs/avaTrigger\")",
+                    "AvaDiagnosticsForwarder": "FROM /messages/modules/avaEdge/outputs/AvaDiagnostics INTO BrokeredEndpoint(\"/modules/AvaEdgeGatewayModule/inputs/avaDiagnostics\")",
+                    "AvaOperationsForwarder": "FROM /messages/modules/avaEdge/outputs/AvaOperational INTO BrokeredEndpoint(\"/modules/AvaEdgeGatewayModule/inputs/avaOperational\")",
+                    "AvaTelemetryForwarder": "FROM /messages/modules/avaEdge/outputs/avaTelemetry INTO BrokeredEndpoint(\"/modules/AvaEdgeGatewayModule/inputs/avaTelemetry\")",
+                    "AvaEdgeGatewayModuleOutput": "FROM /messages/modules/AvaEdgeGatewayModule/outputs/iotc INTO $upstream"
+                },
+                "storeAndForwardConfiguration": {
+                    "timeToLiveSecs": 7200
+                }
+            }
+        },
+        "AvaEdgeGatewayModule": {
+            "properties.desired": {
+                "wpDebugTelemetry": true,
+                "wpDebugRoutedMessage": false,
+                "wpAppHostUri": "iot-poc-central.azureiotcentral.com/",
+                "wpApiToken": "SharedAccessSignature sr=32eb12c4-e4bf-4817-81ee-a09bd997a907&sig=DX4jXlMTELxczos82zpWK9EbVNXqkjgCEx5MwNboIGc%3D&skn=centralapitoken&se=1670395678804",
+                "wpDeviceKey": "KENDJb2VFopv9Gf4CVhOyS5eoeth6WMe0SUW/norj30NVSas1FXqtLAtNyycW6EkgTQwbac4Yzzkex+BurGCMQ==",
+                "wpScopeId": "0ne003E689C",
+                "wpAvaOnvifCameraModelId": "dtmi:com:azuremedia:model:AvaOnvifCameraDevice;1",
+                "wpBlobConnectionString": "",
+                "wpBlobPipelineContainer": "",
+                "wpBlobImageCaptureContainer": ""
+            }
+        },
+        "avaEdge": {
+            "properties.desired": {
+                "ProvisioningToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IllYTGFSZGJ5dFVOSWxiSzdhbUVIemVLRmpFYyIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhdmFlZGdlIiwiYXVkIjpbImh0dHBzOi8vMjFhYWMyNTJmMDE0NDc4Yjg0NmY5YmQ3MmNlMGRiZjEuZWRnZWFwaS5lYXN0dXMyLnZpZGVvYW5hbHl6ZXIuYXp1cmUubmV0L2VkZ2VNb2R1bGVzL2F2YWVkZ2UiXSwiZXhwIjoxNjM4OTQ2ODU2LCJ0b2tlblR5cGUiOiJQcm92aXNpb25pbmdUb2tlbiIsIm1vZHVsZUFybUlkIjoiL3N1YnNjcmlwdGlvbnMvNjVmZWU1ZjQtZTEwMC00Mzc5LTgyMjQtODJjZDExMDU0NDY2L3Jlc291cmNlR3JvdXBzL1BvQ1N0b3JhZ2UvcHJvdmlkZXJzL01pY3Jvc29mdC5NZWRpYS92aWRlb0FuYWx5emVycy9tb3RpcG9jdmlkZW9hbmFseXplci9lZGdlTW9kdWxlcy9hdmFlZGdlIiwibW9kdWxlSWQiOiIxYzYyOTU5Yi04NTcwLTRkNTQtYjMzYy1mMmZjNGMxMzJlNTkiLCJpc3MiOiJodHRwczovL2Vhc3R1czIudmlkZW9hbmFseXplci5henVyZS5uZXQvIn0.e30P2e-O3txEwxnpjS7dx8m16RzGQbYVXKf0BJmsiY-cTNrwCEclADOE18YXiApQ1itS0OwFLL--Ilki3Pm-iuS-1Xqq90RQaEzM59YsrjiyrgYjSJLW3r3UUtXZszzxFEwGGuifRESdaHDptnxJmiwvdNwsk0E1-yVDSwtMfq-n0BwTgh4IMmQddycso432hFIczrKKzS91G7ejgWYhl1DhbA1qHIATh6GRgZ_sG3Y3LsHypkojVD9r3TnGoQsbw0hVTTRlggoI0iFujLfCwI5U2Yzpl0PUUSjtGwG43_d1mjU6s33R6diYezcF03p-NCkpBwXMJaJ0juctXtPrWQ",
+                "ApplicationDataDirectory": "/var/lib/videoanalyzer",
+                "DiagnosticsEventsOutputName": "diagnostics",
+                "OperationalEventsOutputName": "operational",
+                "LogLevel": "Information",
+                "LogCategories": "Application,Events",
+                "AllowUnsecuredEndpoints": false,
+                "TelemetryOptOut": false
+            }
+        }
+    }
+}

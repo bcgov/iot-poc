@@ -1,0 +1,41 @@
+﻿@page
+@model LatestImagesModel
+@{
+    ViewData["Title"] = "MOTI Camera Latest Images";
+    Layout = null;
+}
+
+
+@{ int count = 0;}
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .column {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+    }
+
+    /* Clearfix (clear floats) */
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+
+<div class="row">
+    <div class="column">
+        <img id="profileImage" src="data:image/jpg;base64, @LatestImagesModel.ImageStr3" alt="1" style="width:100%">
+    </div>
+    <div class="column">
+        <img id="profileImage" src="data:image/jpg;base64, @LatestImagesModel.ImageStr2" alt="2" style="width:100%">
+    </div>
+    <div class="column">
+        <img id="profileImage" src="data:image/jpg;base64, @LatestImagesModel.ImageStr1" alt="3" style="width:100%">
+    </div>
+</div>
+

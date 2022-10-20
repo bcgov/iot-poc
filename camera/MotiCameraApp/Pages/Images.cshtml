@@ -1,0 +1,201 @@
+﻿@page
+@model ImagesModel
+@{
+    ViewData["Title"] = "MOTI Camera Images";
+    Layout = null;
+}
+@*<h1>@ViewData["Title"]</h1>*@
+
+@{ int count = 0;}
+
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MotiCameraApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta http-equiv="refresh" content="30000">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 20%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+
+</head>
+
+<div style="margin: 20px">
+    <div class="row">
+        <div class="column">
+            Home
+        </div>
+        <div class="column">
+            East
+        </div>
+        <div class="column">
+            West
+        </div>
+        <div class="column">
+            North
+        </div>
+        <div class="column">
+            South
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <img src="data:image/jpg;base64, @ImagesModel.ImageStrHome" alt="Home" style="width:100%">
+        </div>
+        <div class="column">
+            <img src="data:image/jpg;base64, @ImagesModel.ImageStrEast" alt="East" style="width:100%">
+        </div>
+        <div class="column">
+            <img src="data:image/jpg;base64, @ImagesModel.ImageStrWest" alt="West" style="width:100%">
+        </div>
+        <div class="column">
+            <img src="data:image/jpg;base64, @ImagesModel.ImageStrNorth" alt="North" style="width:100%">
+        </div>
+        <div class="column">
+            <img src="data:image/jpg;base64, @ImagesModel.ImageStrSouth" alt="South" style="width:100%">
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container" hidden>
+
+    <div class="row align-items-start">
+        <div class="col">
+            Home
+        </div>
+        <div class="col">
+            East
+        </div>
+        <div class="col">
+            West
+        </div>
+        <div class="col">
+            North
+        </div>
+        <div class="col">
+            South
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="col"><img height="200" width="150" src="data:image/jpg;base64, @ImagesModel.ImageStrHome"></div>
+        </div>
+        <div class="col">
+            <div class="col"><img height="200" width="150" src="data:image/jpg;base64, @ImagesModel.ImageStrEast"></div>
+        </div>
+        <div class="col">
+            <div class="col"><img height="200" width="150" src="data:image/jpg;base64, @ImagesModel.ImageStrWest"></div>
+        </div>
+        <div class="col">
+            <div class="col"><img height="200" width="150" src="data:image/jpg;base64, @ImagesModel.ImageStrNorth"></div>
+        </div>
+        <div class="col">
+            <div class="col"><img height="200" width="150" src="data:image/jpg;base64, @ImagesModel.ImageStrSouth"></div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container" hidden>
+    <div class="row">
+        <div class="col"><img src="data:image/jpg;base64, @ImagesModel.ImageStrHome"></div>
+        <div class="col"><img src="data:image/jpg;base64, @ImagesModel.ImageStrEast"></div>
+        <div class="col"><img src="data:image/jpg;base64, @ImagesModel.ImageStrWest"></div>
+        <div class="col"><img src="data:image/jpg;base64, @ImagesModel.ImageStrNorth"></div>
+        <div class="col"><img src="data:image/jpg;base64, @ImagesModel.ImageStrSouth"></div>
+    </div>
+</div>
+
+
+
+<table class="table" width="500" hidden>
+
+    @foreach (var image in ImagesModel.Images)
+    {
+        count++;
+
+        if (count == 1)
+        {
+
+
+
+            @*<tr><td><img src="test-1.jpg" width="500" height="400" /></td></tr>*@
+
+            <tr><td><img id="profileImage" src="data:image/jpg;base64, @ImagesModel.ImageStrHome"></td></tr>
+            <tr><td><img id="profileImage" src="data:image/jpg;base64, @ImagesModel.ImageStrEast"></td></tr>
+            <tr><td><img id="profileImage" src="data:image/jpg;base64, @ImagesModel.ImageStrWest"></td></tr>
+            <tr><td><img id="profileImage" src="data:image/jpg;base64, @ImagesModel.ImageStrNorth"></td></tr>
+            <tr><td><img id="profileImage" src="data:image/jpg;base64, @ImagesModel.ImageStrSouth"></td></tr>
+
+
+
+
+
+
+
+            @*<tr><td>@ImagesModel.LastCapturedTime</td></tr>
+                <tr class="info" hidden>
+                    <td>Camera Name</td>
+                    <td>@image.CameraInfo.Hostname</td>
+                </tr>
+                <tr class="info" hidden>
+                    <td>Model</td>
+                    <td>@image.CameraInfo.Model</td>
+                </tr>
+                <tr class="info" hidden>
+                    <td>Manufacturer</td>
+                    <td>@image.CameraInfo.Manufacturer</td>
+                </tr>
+                <tr class="info" hidden>
+                    <td>Firmware</td>
+                    <td>@image.CameraInfo.Firmware</td>
+                </tr>
+                <tr class="info" hidden>
+
+                    <td>SerialNumber</td>
+                    <td>@image.CameraInfo.SerialNumber</td>
+                </tr>*@
+
+
+
+        }
+
+
+
+
+        @*<tr class="info" hidden>
+                <td>Blob URI</td>
+                <td>@image.BlobUri</td>
+            </tr>*@
+
+
+
+
+
+    }
+</table>
+

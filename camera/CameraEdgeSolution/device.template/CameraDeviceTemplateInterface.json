@@ -1,0 +1,39 @@
+{
+    "@id": "dtmi:bruceIotCentral:CameraTemplate_41v;1",
+    "@type": "Interface",
+    "contents": [
+        {
+            "@id": "dtmi:bruceIotCentral:CameraTemplate_41v:GetInformation;1",
+            "@type": "Command",
+            "commandType": "synchronous",
+            "displayName": {
+                "en": "Get Information"
+            },
+            "name": "GetInformation",
+            "request": {
+                "@type": "CommandPayload",
+                "displayName": {
+                    "en": "id"
+                },
+                "name": "id",
+                "schema": "integer"
+            }
+        },
+        {
+            "@id": "dtmi:bruceIotCentral:CameraTemplate_41v:Snapshot;1",
+            "@type": "Command",
+            "commandType": "synchronous",
+            "displayName": {
+                "en": "Snapshot"
+            },
+            "name": "Snapshot"
+        }
+    ],
+    "displayName": {
+        "en": "CameraTemplate"
+    },
+    "@context": [
+        "dtmi:iotcentral:context;2",
+        "dtmi:dtdl:context;2"
+    ]
+}

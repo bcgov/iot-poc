@@ -1,0 +1,116 @@
+{
+    "@id": "dtmi:v2vwiedgn:capabilitymodel:y8g2qxns7vw;1",
+    "@type": "Interface",
+    "contents": [
+        {
+            "@id": "dtmi:k4dgw9rvm:capabilitymodel:hwjeyyuukb:CameraEdgeGateModule;1",
+            "@type": [
+                "Relationship",
+                "EdgeModule"
+            ],
+            "displayName": {
+                "en": "CameraEdgeGateModule"
+            },
+            "maxMultiplicity": 1,
+            "name": "CameraEdgeGateModule",
+            "target": [
+                "dtmi:k4dgw9rvm:CameraEdgeGateModule;1"
+            ]
+        },
+        {
+            "@id": "dtmi:k4dgw9rvm:capabilitymodel:hwjeyyuukb:MotiCamera;1",
+            "@type": [
+                "Relationship",
+                "GatewayDevice"
+            ],
+            "displayName": {
+                "en": "Moti Camera"
+            },
+            "name": "MotiCamera",
+            "target": []
+        },
+        {
+            "@id": "dtmi:k4dgw9rvm:capabilitymodel:hwjeyyuukb:AddCamera;1",
+            "@type": "Command",
+            "commandType": "synchronous",
+            "displayName": {
+                "en": "Add Camera"
+            },
+            "name": "AddCamera",
+            "request": {
+                "@type": "CommandPayload",
+                "displayName": {
+                    "en": "Add Camera Request"
+                },
+                "name": "AddCameraRequest",
+                "schema": {
+                    "@type": "Object",
+                    "displayName": {
+                        "en": "Object"
+                    },
+                    "fields": [
+                        {
+                            "displayName": {
+                                "en": "Camera Id"
+                            },
+                            "name": "CameraId",
+                            "schema": "string"
+                        },
+                        {
+                            "displayName": {
+                                "en": "Camera Name"
+                            },
+                            "name": "CameraName",
+                            "schema": "string"
+                        },
+                        {
+                            "displayName": {
+                                "en": "IP Address"
+                            },
+                            "name": "IPAddress",
+                            "schema": "string"
+                        },
+                        {
+                            "displayName": {
+                                "en": "Username"
+                            },
+                            "name": "Username",
+                            "schema": "string"
+                        },
+                        {
+                            "displayName": {
+                                "en": "Password"
+                            },
+                            "name": "Password",
+                            "schema": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "@id": "dtmi:k4dgw9rvm:capabilitymodel:hwjeyyuukb:DeleteCamera;1",
+            "@type": "Command",
+            "commandType": "synchronous",
+            "displayName": {
+                "en": "Delete Camera"
+            },
+            "name": "DeleteCamera",
+            "request": {
+                "@type": "CommandPayload",
+                "displayName": {
+                    "en": "Camera Id"
+                },
+                "name": "CameraId",
+                "schema": "integer"
+            }
+        }
+    ],
+    "displayName": {
+        "en": "Azure IoT Edge Capability Model hwjeyyuukb"
+    },
+    "@context": [
+        "dtmi:iotcentral:context;2",
+        "dtmi:dtdl:context;2"
+    ]
+}

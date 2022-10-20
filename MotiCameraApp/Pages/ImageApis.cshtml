@@ -1,0 +1,120 @@
+﻿@page
+@model ImageApisModel
+@{
+    ViewData["Title"] = "MOTI Cameras Images Get from Image APIs";
+    Layout = null;
+
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MotiCameraApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta http-equiv="refresh" content="30000">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 20%;
+            padding: 5px;
+        }
+
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+
+
+</head>
+
+<h1>Moti Cameras</h1>
+
+
+<h1 hidden>@ImageApisModel.ErrotStr</h1>
+
+
+@{
+    var cameras = ImageApisModel.ImagesPerCamera;
+
+    <select name="number" id="select">
+        <option value="">Select a camera</option>
+        @{
+            foreach (var camera in cameras)
+            {
+                <option value=@camera.CameraId>@camera.CameraId</option>
+
+            }
+        }
+    </select>
+
+            for (var i = 0; i < cameras.Count(); i++)
+            {
+<div style="margin: 20px" id="camera-@cameras[i].CameraId">
+    <div class="row" id="row1-@cameras[i].CameraId"><h2>Camera @cameras[i].CameraId</h2></div>
+    <div class="row" id="row2-@cameras[i].CameraId">
+        @{
+            foreach (var preset in cameras[i].PresetImageDic.Keys)
+            {
+                <div class="col-sm">
+                    @preset
+                </div>
+
+            }
+        }
+
+    </div>
+    <div class="row" id="row3-@cameras[i].CameraId">
+        @{
+            foreach (var presetImage in cameras[i].PresetImageDic)
+            {
+                <div class="col-sm">
+                    <img src="data:image/jpg;base64, @presetImage.Value" alt="@presetImage.Key" style="width:100%">
+                </div>
+            }
+        }
+    </div>
+
+
+    </div>
+
+    }
+
+}
+
+
+
+    <script>
+        $('#select').on('change', function () {
+            var cameraId = this.value;
+
+            $('div').each(function (i, ele) {
+                console.log(i + ': ' + ele);
+                console.log(ele.getAttribute("id"));
+                if (ele.getAttribute("id") != null && ele.getAttribute("id") != undefined) {
+                    console.log(ele.getAttribute("id"));
+                    if (ele.getAttribute("id").includes(cameraId)) {
+                        ele.hidden = false;
+                    }
+                    else {
+                        ele.hidden = true;
+                    }
+                }
+
+            });
+
+
+            $("#camera-" + cameraId).show();
+        });
+    </script>
+

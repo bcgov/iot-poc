@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: Test API for IoT APIs
+  description: Test API for IoT APIS.
+  version: 0.0.1
+servers:
+  - url: https://moti-iot-test.azurewebsites.net
+    variables:
+      environment:
+        default: ".api"   # Production server
+        enum:
+          - ".api"        # Production server
+          - -test.api     # Test server
+          - -dev.api      # Dev server
+paths:
+  "/api/camera/devices/iotcentral/116/images/latest":
+    get:
+      summary: Returns the latest images for camera 116.
+      description: Test.
+      responses:
+        '200':    # status code
+          description: A zip file will be returned as the response
+          content:
+            application/json:
+              schema: 
+                type: object

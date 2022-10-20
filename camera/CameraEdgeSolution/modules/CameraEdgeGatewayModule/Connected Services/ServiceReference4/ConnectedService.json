@@ -1,0 +1,38 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "http://www.onvif.org/ver20/imaging/wsdl/imaging.wsdl"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, ServiceReference4"
+    ],
+    "references": [
+      "Microsoft.Extensions.DependencyInjection, {Microsoft.Extensions.DependencyInjection, 6.0.0}",
+      "Microsoft.Extensions.DependencyInjection.Abstractions, {Microsoft.Extensions.DependencyInjection.Abstractions, 6.0.0}",
+      "Microsoft.Extensions.Logging, {Microsoft.Extensions.Logging, 6.0.0}",
+      "Microsoft.Extensions.Logging.Abstractions, {Microsoft.Extensions.Logging.Abstractions, 6.0.0}",
+      "Microsoft.Extensions.Options, {Microsoft.Extensions.Options, 6.0.0}",
+      "Microsoft.Extensions.Primitives, {Microsoft.Extensions.Primitives, 6.0.0}",
+      "Newtonsoft.Json, {Newtonsoft.Json, 13.0.1}",
+      "System.Diagnostics.DiagnosticSource, {System.Diagnostics.DiagnosticSource, 6.0.0}",
+      "System.Reflection.DispatchProxy, {System.Reflection.DispatchProxy, 4.5.0}",
+      "System.Runtime.CompilerServices.Unsafe, {System.Runtime.CompilerServices.Unsafe, 6.0.0}",
+      "System.Security.AccessControl, {System.Security.AccessControl, 4.5.0}",
+      "System.Security.Cryptography.Xml, {System.Security.Cryptography.Xml, 4.5.0}",
+      "System.Security.Permissions, {System.Security.Permissions, 4.5.0}",
+      "System.Security.Principal.Windows, {System.Security.Principal.Windows, 4.5.0}",
+      "System.ServiceModel, {System.ServiceModel.Primitives, 4.7.0}",
+      "System.ServiceModel.Duplex, {System.ServiceModel.Duplex, 4.7.0}",
+      "System.ServiceModel.Http, {System.ServiceModel.Http, 4.7.0}",
+      "System.ServiceModel.NetTcp, {System.ServiceModel.NetTcp, 4.7.0}",
+      "System.ServiceModel.Primitives, {System.ServiceModel.Primitives, 4.7.0}",
+      "System.ServiceModel.Security, {System.ServiceModel.Security, 4.7.0}"
+    ],
+    "targetFramework": "netcoreapp3.1",
+    "typeReuseMode": "All"
+  }
+}
